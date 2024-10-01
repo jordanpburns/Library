@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="main-container" class="grid-container">
+        <div id="header" class="flex-container">
+            <div>My Library</div>
+        </div>
+        <div id="sidebar" class="flex-container">
+            <div class="input-container">
+                <button id="add-a-book">Add a book</button>
+            </div>
+            <div class="flex-container" id="form-container">
+                <div class="input-container flex-container">
+                    <label for="title">Title</label>
+                    <input type="text"id="title">
+                </div>
+                <div class="input-container flex-container">
+                    <label for="author">Author</label>
+                    <input type="text"id="author">
+                </div>
+                <div class="input-container flex-container">
+                    <label for="numPages">Number of Pages</label>
+                    <input type="text"id="numPages">
+                </div>
+                <div class="input-container flex-container">
+                    <label for="read">Have you already read this book?</label>
+                    <select id="read">
+                        <option value="false">I haven't read it yet.</option>
+                        <option value="true">I've already read it.</option>
+                    </select>
+                </div>
+                <div class="input-container">
+                    <button id="submit-button">Submit</button>
+                </div>
+                <div class="input-container">
+                    <button id="close-form">Close Form</button>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="grid-container"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
