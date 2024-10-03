@@ -8,18 +8,34 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div id="main-container" class="grid-container">
+    <div id="main-container" class="grid-container form-closed">
         <div id="header" class="flex-container">
-            <div>My Library</div>
+            <div id="search-bar-container" class="flex-container">
+                <img src="./assets/magnify.svg">
+                <input type="text" id="search-bar" placeholder="Search by Author or Title">
+            </div>
+            <div id="greeting">Hi Jordan! Let's read some <i>books</i>!</div>
+            <div id="account-container" class = "flex-container">
+                <button id="my-account-button">My Account</button>
+                <button id="log-in-button">Log in</button>
+                <button id="settings-button">Settings</button>
+            </div>
+        </div>
+        <div id="top-left-corner" class="flex-container">
+            <div class="sidebar-button-container flex-container">
+                <img src="./assets/library-outline.svg">
+                <button>My Library</button>                
+            </div>
         </div>
         <div id="sidebar" class="flex-container">
-            <div class="input-container">
-                <button id="add-a-book">Add a book</button>
-            </div>
+            <button id="add-a-book-button" class="sidebar-button-container flex-container">
+                <img src="./assets/book-plus-outline.svg">
+                <div>Add A Book</div>
+            </button>
             <div class="flex-container" id="form-container">
                 <div class="input-container flex-container">
                     <label for="title">Title</label>
-                    <input type="text"id="title">
+                    <input type="text" id="title">
                 </div>
                 <div class="input-container flex-container">
                     <label for="author">Author</label>
@@ -27,7 +43,7 @@
                 </div>
                 <div class="input-container flex-container">
                     <label for="numPages">Number of Pages</label>
-                    <input type="text"id="numPages">
+                    <input type="number"id="numPages">
                 </div>
                 <div class="input-container flex-container">
                     <label for="read">Have you already read this book?</label>
@@ -36,16 +52,23 @@
                         <option value="true">I've already read it.</option>
                     </select>
                 </div>
-                <div class="input-container">
-                    <button id="submit-button">Submit</button>
-                </div>
-                <div class="input-container">
-                    <button id="close-form">Close Form</button>
+                <div class="flex-container">
+                    <div class="input-container">
+                        <button id="submit-button">Submit</button>
+                    </div>
+                    <div class="input-container">
+                        <button id="close-form">Close Form</button>
+                    </div>
                 </div>
             </div>
+            <button class="sidebar-button-container flex-container">
+                <img src="./assets/library-shelves.svg">
+                <div>Add Library</div>
+            </button>            
         </div>
         <div id="content" class="grid-container"></div>
     </div>
+    <div>icons from <a>https://pictogrammers.com/</a></div>
     <script src="script.js"></script>
   </body>
 </html>

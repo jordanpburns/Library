@@ -39,25 +39,18 @@ function createCard(book) {
     const deleteCardButton = document.createElement("button");
     deleteCardButton.textContent = "Delete book";
     deleteCardButton.classList.add("delete-button");
-
-    // //add delete card function to the delete button using id
-    // const cardChildren = card.childNodes;
-    // let deleteButton = null;
-    // for (let i = 0; i < cardChildren.length; i++) {
-    //     if (cardChildren[i].className == "delete-button") {
-    //         deleteButton = cardChildren[i];
-    //         break;
-    //     }        
-    // }
     deleteCardButton.addEventListener("click", deleteBook);
 
     const toggleReadButton = document.createElement("button");
     toggleReadButton.classList.add("toggle-read-button");
-    toggleReadButton.textContent = book.read ? "Change to not read yet" : "change to already read";
+    toggleReadButton.textContent = book.read ? "Set as Unread" : "Set as Read";
     toggleReadButton.addEventListener("click", toggleRead);
 
     const cardDiv = document.createElement("div");
-    cardDiv.classList.add("card");
+    cardDiv.classList.add("card", "grid-container");
+    if (!book.read) {
+        cardDiv.classList.add("unread");
+    }
 
     cardDiv.append(
         titleDiv,
@@ -156,9 +149,12 @@ submitButton.addEventListener("click",
     }
 )
 
-openForm = document.getElementById("add-a-book");
+openForm = document.getElementById("add-a-book-button");
 openForm.addEventListener("click", 
     (event) => {
+        mainContainer = document.getElementById("main-container");
+        mainContainer.classList.remove("form-closed");
+        mainContainer.classList.add("form-open");
         document.getElementById("form-container").style.display = "flex";
     }
 )
@@ -166,8 +162,40 @@ openForm.addEventListener("click",
 closeForm = document.getElementById("close-form");
 closeForm.addEventListener("click", 
     (event) => {
+        mainContainer = document.getElementById("main-container");
         document.getElementById("form-container").style.display = "none";
+        mainContainer.classList.remove("form-open");
+        mainContainer.classList.add("form-closed");
     }
 )
 
- 
+document.getElementById("search-bar").addEventListener("keyup",
+    (event) => {
+        const searchText = document.getElementById("search-bar").value;
+        const cards = document.getElementById("content").childNodes;
+        // get title and author
+        for (card of cards) {
+            let authorText = null;
+            let titleText = null;
+            for (child of card.childNodes) {
+                if (child.className == "author-div") {
+                    authorText = child.textContent;
+                }
+                if (child.className == "title-div") {
+                    titleText = child.textContent;
+                }
+            }
+            // if searchText not in either author or title then hide card
+            if (!authorText.includes(searchText) && !titleText.includes(searchText)) {
+                card.style.display = "none";
+            } else {
+                card.style.display = "grid";
+            }
+        }
+
+    }
+)
+
+ const book = new Book("The Book Title", "The Author", 157, true);
+ addBookToLibrary(book, myLibrary);
+ displayBooks(myLibrary);
