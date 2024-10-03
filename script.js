@@ -195,7 +195,3 @@ document.getElementById("search-bar").addEventListener("keyup",
 
     }
 )
-
- const book = new Book("The Book Title", "The Author", 157, true);
- addBookToLibrary(book, myLibrary);
- displayBooks(myLibrary);
