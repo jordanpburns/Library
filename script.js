@@ -1,13 +1,16 @@
-function Book(title, author, numPages, read) {
-    let id = "id" + Math.random().toString(16).slice(2);
-    this.id = id;
-    this.title = title;
-    this.author = author;
-    this.numPages = numPages;
-    this.read = read === "true" ? true : false;
-    this.displayed = false;
-    this.info = function() {
-        infoString = `${this.title} by ${this.author}, ${numPages} pages, `;
+class Book {
+    constructor(title, author, numPages, read) {
+        let id = "id" + Math.random().toString(16).slice(2);
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.numPages = numPages;
+        this.read = read === "true" ? true : false;
+        this.displayed = false;
+    }
+    
+    info() {
+        let infoString = `${this.title} by ${this.author}, ${numPages} pages, `;
         if (this.read) {
             infoString += "already read";
         } else {
